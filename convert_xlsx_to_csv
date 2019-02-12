@@ -1,0 +1,27 @@
+"""
+Autor: Paulo Werneck
+Data: 12/02/2019
+
+Descrição: transformar um arquivo (específico) xls em csv com o pacote pandas
+
+Input: Arquivo .xlsx
+Output: Arquivo .csv
+
+"""
+
+import pandas as pd
+
+file = pd.read_excel('Market_Share.xlsx', sheet_name='Bandeiras X Regioes')
+file = file.drop(columns=['Unnamed: 0'])
+file = file.drop([0, 1, 2])
+
+i = 2
+while i <= 19:
+    file['Unnamed: {0}'.format(str(i))] = file['Unnamed: {0}'.format(str(i))].fillna(0)
+    file['Unnamed: {0}'.format(str(i))] = file['Unnamed: ' + str(i)].apply(lambda x: round(x))
+    i += 1
+
+file.to_csv('output2.csv', sep=';', index=False)
+
+
+print(file.head(20))

@@ -1,4 +1,14 @@
-#class AgregacoesCombustivelSparsql:
+#!/usr/bin/python3
+
+"""
+Autor: Paulo Werneck
+Data: 21/03/2019
+
+Analise descritiava usando pyspark para analisar dataset de posto de gasolina de combustível
+
+Input: Dataset do site dados.gov.br (http://dados.gov.br/dataset/infopreco)
+Output: Agregações por postos e por combustíveis
+""""
 
 import os
 from pyspark.sql import SparkSession
@@ -33,7 +43,7 @@ df_count_posto = df.agg(countDistinct("CNPJ").alias("QTD_POSTOS")).show()
 
 # tipos de combustiveis disponiveis para analise
 df_tipo_combustivel = df.select("PRODUTO").distinct().orderBy("PRODUTO").show(truncate=False)
-e
+
 # media dos precos por estado por combustivel
 df_media_preco_uf = df.groupBy("UF") \
     .pivot("PRODUTO") \
@@ -46,10 +56,3 @@ df_media_preco_uf = df.groupBy("UF") \
             round("Gasolina C Comum", 3).alias("Gasolina_Comum")) \
     .orderBy("Gasolina_Comum", ascending=False) \
     .show(30)
-
-#df_select.spark("select UF, Gasolina_Comum from combustivel").show()
-
-# top 3 postos mais caros por combustível
-#df_top3_combustivel = df.groupBy("CNPJ").max()
-
-#df.show(5)

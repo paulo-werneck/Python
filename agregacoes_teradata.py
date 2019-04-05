@@ -4,11 +4,11 @@ Paulo Werneck
 
 Classe com estatistíscias descritivas
 
-IN: Conexão teradata GPA
+IN: Conexão teradata
 OUT: aggregações em pyspark
 """
 
-from teradata_gpa.connection import Connection
+from teradata_gpa.connection_teradata import Connection
 from pyspark.sql import SparkSession
 
 

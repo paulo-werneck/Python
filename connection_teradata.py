@@ -15,9 +15,9 @@ from time import sleep
 class Connection:
 
     def __init__(self):
-        self.url = '10.100.10.241'
-        self.user = 'TC015369'
-        self.password = 'Cognos04'
+        self.url = 'XXX'
+        self.user = 'XXX'
+        self.password = 'XXX'
 
     def connection_gpa(self):
         try:

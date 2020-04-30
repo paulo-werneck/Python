@@ -1,4 +1,10 @@
 def replace_special_character(func):
+    """
+        Funcao decoradora para remover caracteres especiais
+        
+        param1: func - funcao a ser decorada
+        return: funcao decorada com caracteres especiais removidos
+    """
     def fn_decorada_characters(*args):
         fnc = func(*args)
         dict_char = {

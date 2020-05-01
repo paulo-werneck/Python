@@ -6,7 +6,6 @@ def replace_special_character(func):
         return: funcao decorada com caracteres especiais removidos
     """
     def fn_decorada_characters(*args):
-        fnc = func(*args)
         dict_char = {
             'a': list('áàâãäå'), 'A': list('ÁÀÂÃÄÅ'),
             'e': list('éèêẽë'), 'E': list('ÉÈÊẼË'),
